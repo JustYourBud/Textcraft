@@ -84,6 +84,7 @@ selected_tool = TOOLS[0]
 world = []
 world_size = (16, 16)
 player_pos = (0, 0)
+player_icon = "🙂"
 
 # Define the commands and their effects
 commands = {
@@ -95,6 +96,7 @@ commands = {
     "place": lambda: place_block(),
     "craft": lambda: craft_tool(),
     "map": lambda: print_world(),
+    "icon": lambda: change_icon(),
     "help": lambda: show_help(),
 }
 
@@ -143,12 +145,17 @@ def print_world():
         row = ""
         for x in range(world_size[0]):
             if (x, y) == player_pos:
-                row += "🙂"
+                row += player_icon
             else:
                 block = world[x][y]
                 symbol = symbols[block]
                 row += symbol
         print(row)
+
+
+def change_icon():
+    global player_icon
+    player_icon = input("What would you like your icon to be? ").lower()[0]
 
 
 def move_player(direction):
