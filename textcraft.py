@@ -68,7 +68,7 @@ HARDNESS = {
     "planks": 2,
 }
 REQUIREMENT = {
-    "air": -1,
+    "air": 99,
     "dirt": -1,
     "stone": -1,
     "wood": -1,
@@ -296,10 +296,6 @@ def break_block():
     hardness = HARDNESS[block]
     requirement = REQUIREMENT[block]
     break_time = BREAK_TIME[block]
-
-    if block == "air":
-        print("You cannot break air")
-        return
 
     # Get the tool type and its properties
     tool = selected_tool
