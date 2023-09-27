@@ -421,6 +421,6 @@ while playing:
         commands[command]()
     else:
         # The command is invalid
-        print("Invalid command.")
+        print("Invalid command. Type 'help' to see the available commands.")
 
 print("Thanks for playing!")
