@@ -1,5 +1,5 @@
 # A basic version of Minecraft in Python as a text adventure
-version = "0.1.0"
+version = "0.1.1"
 
 # Import the random module
 import random
@@ -192,6 +192,10 @@ def break_block():
     hardness = HARDNESS[block]
     requirement = REQUIREMENT[block]
     break_time = BREAK_TIME[block]
+
+    if block == "air":
+        print("You cannot break air")
+        return
 
     # Get the tool type and its properties
     tool = selected_tool
