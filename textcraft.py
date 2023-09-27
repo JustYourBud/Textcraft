@@ -1,5 +1,5 @@
 # A basic version of Minecraft in Python as a text adventure
-version = "0.3.0"
+version = "0.3.1"
 
 # Import the random module
 import random
@@ -166,11 +166,12 @@ def save_world():
     global inventory
     global selected_tool
     global world
+    global world_size
     global player_pos
     global player_icon
 
     # Save the data to a file
-    world_data = [inventory, selected_tool, world, player_pos, player_icon]
+    world_data = [inventory, selected_tool, world, world_size, player_pos, player_icon]
     world_name = input("Please name your world: ").lower()
     world_save = open("saves/%s.txt" % (world_name), "wb")
     pickle.dump(world_data, world_save)
@@ -185,6 +186,7 @@ def load_world():
     global inventory
     global selected_tool
     global world
+    global world_size
     global player_pos
     global player_icon
 
@@ -204,8 +206,9 @@ def load_world():
     inventory = world_data[0]
     selected_tool = world_data[1]
     world = world_data[2]
-    player_pos = world_data[3]
-    player_icon = world_data[4]
+    world_size = world_data[3]
+    player_pos = world_data[4]
+    player_icon = world_data[5]
     world_save.close()
     print("%s loaded!" % (world_name))
     print_world()
