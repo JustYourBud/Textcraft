@@ -363,6 +363,8 @@ def place_block():
     print("You placed", block)
     world[x][y + 1] = block
     inventory[block] -= 1
+    if inventory[block] <= 0:
+        del inventory[block]
 
 
 def craft_item():
