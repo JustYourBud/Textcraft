@@ -375,7 +375,7 @@ def craft_item():
     item = input("> ")
 
     # Check if the tool is valid
-    if not item in TOOLS:
+    if item not in CRAFTED_BLOCKS and item not in TOOLS:
         print("Invalid item")
         return
 
@@ -387,9 +387,13 @@ def craft_item():
             return
 
     # Craft the tool and update the inventory
+    inventory[item] = inventory.get(item, 0) + 1
     print("You crafted", item)
     for material, amount in recipe.items():
         inventory[material] -= amount
+
+        if inventory[material] <= 0:
+            del inventory[material]
 
     # # Select the new tool
     # selected_tool = item
