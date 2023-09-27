@@ -94,6 +94,7 @@ commands = {
     "dig": lambda: break_block(),
     "place": lambda: place_block(),
     "craft": lambda: craft_tool(),
+    "map": lambda: print_world(),
     "help": lambda: show_help(),
 }
 
