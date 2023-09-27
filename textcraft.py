@@ -72,15 +72,15 @@ HARDNESS = {
 }
 REQUIREMENT = {
     "air": 99,
-    "dirt": -1,
-    "stone": -1,
-    "wood": -1,
-    "leaves": -1,
-    "coal": -1,
-    "iron": -1,
-    "gold": -1,
-    "diamond": -1,
-    "planks": -1,
+    "dirt": 0,
+    "stone": 1,
+    "wood": 0,
+    "leaves": 0,
+    "coal": 1,
+    "iron": 2,
+    "gold": 3,
+    "diamond": 3,
+    "planks": 0,
 }
 CRAFTING = {
     "planks": {"quantity": 4, "recipe": {"wood": 1}},
