@@ -94,7 +94,16 @@ commands = {
     "dig": lambda: break_block(),
     "place": lambda: place_block(),
     "craft": lambda: craft_tool(),
+    "help": lambda: show_help(),
 }
+
+
+def show_help():
+    global commands
+    # List the available commands and their descriptions
+    print("You can use these commands:")
+    for command in commands:
+        print(f"- {command}")
 
 
 # Define some helper functions
@@ -322,6 +331,7 @@ def craft_tool():
 print("Welcome to the text-based minecraft game!")
 generate_world()
 print_world()
+show_help()
 
 # Main game loop
 playing = True
