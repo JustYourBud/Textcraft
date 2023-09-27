@@ -1,5 +1,5 @@
 # A basic version of Minecraft in Python as a text adventure
-version = "0.1.1"
+version = "0.2.0"
 
 # Import the random module
 import random
