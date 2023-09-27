@@ -97,6 +97,7 @@ commands = {
     "craft": lambda: craft_tool(),
     "map": lambda: print_world(),
     "icon": lambda: change_icon(),
+    "save": lambda: save_world(),
     "help": lambda: show_help(),
 }
 
@@ -151,6 +152,26 @@ def print_world():
                 symbol = symbols[block]
                 row += symbol
         print(row)
+
+
+def save_world():
+    import os
+    import pickle
+
+    if not os.path.exists("saves"):
+        os.makedirs("saves")
+
+    global inventory
+    global selected_tool
+    global world
+    global player_pos
+    global player_icon
+
+    world_data = [inventory, selected_tool, world, player_pos, player_icon]
+    world_name = input("Please name your world: ").lower()
+    world_save = open("saves/%s.txt" % (world_name), "wb")
+    pickle.dump(world_data, world_save)
+    world_save.close()
 
 
 def change_icon():
