@@ -5,7 +5,20 @@ version = "0.5.0"
 import random
 
 # Define some constants
-BLOCKS = ["air", "dirt", "stone", "wood", "leaves", "coal", "iron", "gold", "diamond"]
+NATURAL_BLOCKS = [
+    "air",
+    "dirt",
+    "stone",
+    "wood",
+    "leaves",
+    "coal",
+    "iron",
+    "gold",
+    "diamond",
+]
+CRAFTED_BLOCKS = [
+    "planks",
+]
 TOOLS = [
     "hand",
     "wooden pickaxe",
@@ -40,6 +53,7 @@ BREAK_TIME = {
     "iron": 4.5,
     "gold": 4.5,
     "diamond": 7.5,
+    "planks": 2,
 }
 HARDNESS = {
     "air": 0,
@@ -51,6 +65,7 @@ HARDNESS = {
     "iron": 5,
     "gold": 3,
     "diamond": 5,
+    "planks": 2,
 }
 REQUIREMENT = {
     "air": -1,
@@ -62,8 +77,10 @@ REQUIREMENT = {
     "iron": -1,
     "gold": -1,
     "diamond": -1,
+    "planks": -1,
 }
 CRAFTING = {
+    "planks": {"wood": 1},
     "wooden pickaxe": {"wood": 3, "stick": 2},
     "stone pickaxe": {"stone": 3, "stick": 2},
     "iron pickaxe": {"iron ingot": 3, "stick": 2},
@@ -123,7 +140,7 @@ def generate_world():
     for x in range(world_size[0]):
         column = []
         for y in range(world_size[1]):
-            block = random.choice(BLOCKS)
+            block = random.choice(NATURAL_BLOCKS)
             column.append(block)
         world.append(column)
 
@@ -143,6 +160,7 @@ def print_world():
         "iron": "⬜",
         "gold": "🪙",
         "diamond": "💎",
+        "planks": "📦",
     }
 
     for y in range(world_size[1] - 1, -1, -1):
