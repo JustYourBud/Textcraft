@@ -20,7 +20,7 @@ CRAFTED_BLOCKS = [
     "planks",
 ]
 ITEMS = [
-    "sticks",
+    "stick",
 ]
 TOOLS = [
     "hand",
@@ -84,7 +84,7 @@ REQUIREMENT = {
 }
 CRAFTING = {
     "planks": {"quantity": 4, "recipe": {"wood": 1}},
-    "sticks": {"quantity": 4, "recipe": {"planks": 2}},
+    "stick": {"quantity": 4, "recipe": {"planks": 2}},
     "wooden pickaxe": {"quantity": 1, "recipe": {"planks": 3, "stick": 2}},
     "stone pickaxe": {"quantity": 1, "recipe": {"stone": 3, "stick": 2}},
     "iron pickaxe": {"quantity": 1, "recipe": {"iron ingot": 3, "stick": 2}},
