@@ -95,6 +95,7 @@ commands = {
     "dig": lambda: break_block(),
     "place": lambda: place_block(),
     "craft": lambda: craft_tool(),
+    "inventory": lambda: show_inventory(),
     "map": lambda: print_world(),
     "icon": lambda: change_icon(),
     "save": lambda: save_world(),
@@ -251,6 +252,11 @@ def move_player(direction):
     # Update the player position
     player_pos = (x, y)
     print("You moved to", player_pos)
+
+
+def show_inventory():
+    global inventory
+    print("Your inventory:", inventory)
 
 
 def break_block():
