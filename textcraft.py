@@ -98,6 +98,7 @@ commands = {
     "map": lambda: print_world(),
     "icon": lambda: change_icon(),
     "save": lambda: save_world(),
+    "load": lambda: load_world(),
     "help": lambda: show_help(),
 }
 
@@ -172,6 +173,34 @@ def save_world():
     world_save = open("saves/%s.txt" % (world_name), "wb")
     pickle.dump(world_data, world_save)
     world_save.close()
+
+
+def load_world():
+    from os.path import exists
+    import pickle
+
+    global inventory
+    global selected_tool
+    global world
+    global player_pos
+    global player_icon
+
+    world_name = input(
+        "Please enter the name of the world you'd like to load: "
+    ).lower()
+    if not exists("saves/%s.txt" % (world_name)):
+        print(
+            "That world doesn't seem to exist! Make sure it's in the saves directory."
+        )
+        return
+
+    world_save = open("saves/%s.txt" % (world_name), "rb")
+    world_data = pickle.load(world_save)
+    inventory = world_data[0]
+    selected_tool = world_data[1]
+    world = world_data[2]
+    player_pos = world_data[3]
+    player_icon = world_data[4]
 
 
 def change_icon():
