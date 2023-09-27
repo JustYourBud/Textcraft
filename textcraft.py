@@ -80,13 +80,14 @@ REQUIREMENT = {
     "planks": -1,
 }
 CRAFTING = {
-    "planks": {"wood": 1},
-    "wooden pickaxe": {"wood": 3, "stick": 2},
-    "stone pickaxe": {"stone": 3, "stick": 2},
-    "iron pickaxe": {"iron ingot": 3, "stick": 2},
-    "gold pickaxe": {"gold ingot": 3, "stick": 2},
-    "diamond pickaxe": {"diamond": 3, "stick": 2},
+    "planks": {"quantity": 4, "recipe": {"wood": 1}},
+    "wooden pickaxe": {"quantity": 1, "recipe": {"wood": 3, "stick": 2}},
+    "stone pickaxe": {"quantity": 1, "recipe": {"stone": 3, "stick": 2}},
+    "iron pickaxe": {"quantity": 1, "recipe": {"iron ingot": 3, "stick": 2}},
+    "gold pickaxe": {"quantity": 1, "recipe": {"gold ingot": 3, "stick": 2}},
+    "diamond pickaxe": {"quantity": 1, "recipe": {"diamond": 3, "stick": 2}},
 }
+
 SMELTING = {
     "iron ingot": {"iron ore": 1},
     "gold ingot": {"gold ore": 1},
@@ -380,15 +381,19 @@ def craft_item():
         return
 
     # Check if the player has enough materials to craft the tool
-    recipe = CRAFTING.get(item, {})
+    crafting_data = CRAFTING.get(item, {})
+    recipe = crafting_data.get("recipe", {})
+    quantity = crafting_data.get("quantity", 1)
+
+    print(recipe)
     for material, amount in recipe.items():
         if not material in inventory or inventory[material] < amount:
             print("You don't have enough", material)
             return
 
     # Craft the tool and update the inventory
-    inventory[item] = inventory.get(item, 0) + 1
-    print("You crafted", item)
+    inventory[item] = inventory.get(item, 0) + quantity
+    print("You crafted %s %s" % (quantity, item))
     for material, amount in recipe.items():
         inventory[material] -= amount
 
