@@ -94,7 +94,7 @@ commands = {
     "west": lambda: move_player("a"),
     "dig": lambda: break_block(),
     "place": lambda: place_block(),
-    "craft": lambda: craft_tool(),
+    "craft": lambda: craft_item(),
     "inventory": lambda: show_inventory(),
     "map": lambda: print_world(),
     "icon": lambda: change_icon(),
@@ -346,35 +346,35 @@ def place_block():
     inventory[block] -= 1
 
 
-def craft_tool():
-    # Craft a tool from the available materials
+def craft_item():
+    # Craft an item from the available materials
     global inventory
-    global selected_tool
+    # global selected_tool
 
     # Ask the player what tool they want to craft
-    print("What tool do you want to craft?")
+    print("What item do you want to craft?")
     print("Your inventory:", inventory)
-    tool = input("> ")
+    item = input("> ")
 
     # Check if the tool is valid
-    if not tool in TOOLS:
-        print("Invalid tool")
+    if not item in TOOLS:
+        print("Invalid item")
         return
 
     # Check if the player has enough materials to craft the tool
-    recipe = CRAFTING.get(tool, {})
+    recipe = CRAFTING.get(item, {})
     for material, amount in recipe.items():
         if not material in inventory or inventory[material] < amount:
             print("You don't have enough", material)
             return
 
     # Craft the tool and update the inventory
-    print("You crafted", tool)
+    print("You crafted", item)
     for material, amount in recipe.items():
         inventory[material] -= amount
 
-    # Select the new tool
-    selected_tool = tool
+    # # Select the new tool
+    # selected_tool = item
 
 
 # def smelt_item():
