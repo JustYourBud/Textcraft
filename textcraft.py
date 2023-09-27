@@ -159,6 +159,7 @@ def save_world():
     import os
     import pickle
 
+    # Create a saves folder if it doesn't exist
     if not os.path.exists("saves"):
         os.makedirs("saves")
 
@@ -168,11 +169,13 @@ def save_world():
     global player_pos
     global player_icon
 
+    # Save the data to a file
     world_data = [inventory, selected_tool, world, player_pos, player_icon]
     world_name = input("Please name your world: ").lower()
     world_save = open("saves/%s.txt" % (world_name), "wb")
     pickle.dump(world_data, world_save)
     world_save.close()
+    print("Your world has been saved to /saves/%s.txt" % (world_name))
 
 
 def load_world():
@@ -185,6 +188,7 @@ def load_world():
     global player_pos
     global player_icon
 
+    # Get name of world and check if it exists in the saves folder
     world_name = input(
         "Please enter the name of the world you'd like to load: "
     ).lower()
@@ -194,6 +198,7 @@ def load_world():
         )
         return
 
+    # Load the data from the file
     world_save = open("saves/%s.txt" % (world_name), "rb")
     world_data = pickle.load(world_save)
     inventory = world_data[0]
@@ -201,6 +206,9 @@ def load_world():
     world = world_data[2]
     player_pos = world_data[3]
     player_icon = world_data[4]
+    world_save.close()
+    print("%s loaded!" % (world_name))
+    print_world()
 
 
 def change_icon():
