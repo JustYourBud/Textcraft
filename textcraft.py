@@ -19,6 +19,9 @@ NATURAL_BLOCKS = [
 CRAFTED_BLOCKS = [
     "planks",
 ]
+ITEMS = [
+    "sticks",
+]
 TOOLS = [
     "hand",
     "wooden pickaxe",
@@ -81,6 +84,7 @@ REQUIREMENT = {
 }
 CRAFTING = {
     "planks": {"quantity": 4, "recipe": {"wood": 1}},
+    "sticks": {"quantity": 4, "recipe": {"planks": 2}},
     "wooden pickaxe": {"quantity": 1, "recipe": {"wood": 3, "stick": 2}},
     "stone pickaxe": {"quantity": 1, "recipe": {"stone": 3, "stick": 2}},
     "iron pickaxe": {"quantity": 1, "recipe": {"iron ingot": 3, "stick": 2}},
@@ -374,7 +378,7 @@ def craft_item():
     item = input("> ")
 
     # Check if the tool is valid
-    if item not in CRAFTED_BLOCKS and item not in TOOLS:
+    if item not in CRAFTED_BLOCKS and item not in ITEMS and item not in TOOLS:
         print("Invalid item")
         return
 
@@ -383,7 +387,6 @@ def craft_item():
     recipe = crafting_data.get("recipe", {})
     quantity = crafting_data.get("quantity", 1)
 
-    print(recipe)
     for material, amount in recipe.items():
         if not material in inventory or inventory[material] < amount:
             print("You don't have enough", material)
