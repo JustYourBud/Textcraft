@@ -118,22 +118,22 @@ def print_world():
     global world_size
     global player_pos
     symbols = {
-        "air": " ",
-        "dirt": ".",
-        "stone": "#",
-        "wood": "|",
-        "leaves": "@",
-        "coal": "*",
-        "iron": "&",
-        "gold": "$",
-        "diamond": "%",
+        "air": "  ",
+        "dirt": "🟫",
+        "stone": "🪨",
+        "wood": "🪵",
+        "leaves": "🍃",
+        "coal": "⚫",
+        "iron": "⬜",
+        "gold": "🪙",
+        "diamond": "💎",
     }
 
     for y in range(world_size[1] - 1, -1, -1):
         row = ""
         for x in range(world_size[0]):
             if (x, y) == player_pos:
-                row += "+"
+                row += "🙂"
             else:
                 block = world[x][y]
                 symbol = symbols[block]
