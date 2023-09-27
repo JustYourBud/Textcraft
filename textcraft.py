@@ -405,7 +405,7 @@ def quit_game():
 
 
 # Start the game
-print("Welcome to the text-based minecraft game!")
+print("Welcome to Textcraft! (v%s)" % (version))
 generate_world()
 print_world()
 show_help()
