@@ -359,6 +359,10 @@ def place_block():
         print("You don't have any", block)
         return
 
+    if block in ITEMS or block in TOOLS:
+        print("You cannot place", block)
+        return
+
     # Place the block and update the world and the inventory
     print("You placed", block)
     world[x][y + 1] = block
