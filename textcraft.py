@@ -100,6 +100,7 @@ commands = {
     "save": lambda: save_world(),
     "load": lambda: load_world(),
     "help": lambda: show_help(),
+    "quit": lambda: quit_game(),
 }
 
 
@@ -396,6 +397,13 @@ def craft_tool():
 #       fuel_available = 0
 #       for fuel, value in FUEL.items():
 
+
+def quit_game():
+    global playing
+    # Set the playing flag to False to end the game loop
+    playing = False
+
+
 # Start the game
 print("Welcome to the text-based minecraft game!")
 generate_world()
@@ -414,3 +422,5 @@ while playing:
     else:
         # The command is invalid
         print("Invalid command.")
+
+print("Thanks for playing!")
